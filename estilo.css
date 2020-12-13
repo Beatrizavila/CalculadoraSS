@@ -1,0 +1,140 @@
+*{box-sizing: border-box;}
+
+body::-webkit-scrollbar{
+  display:none;
+}
+
+html,body{
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  background: #4A4645;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.calculadora {
+  background: #4A4645;
+  width: 75%;
+  height: 75%;
+}
+
+
+.display{
+  width: 97.5%;
+  height: 75px;
+  margin: 0 8px 8px;
+  display: grid;
+  align-content: center;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 50px;
+}
+
+.displaym{
+  width: 97.5%;
+  height: 30px;
+  background-color: transparent;
+  color: white;
+  margin: 8px 8px 0;
+  display: grid;
+  align-content: center;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 25px;
+}
+
+.botonesContainer{
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  width: 100%;
+  height: 80%;
+  align-items: center;
+  margin-bottom: 5%;
+}
+
+.botones{
+      border: 1px solid black; 
+      text-transform: uppercase; 
+      text-align: center;
+      display: inline-block;
+      font-size: 30px;
+      margin: 8px 8px;
+      -webkit-transition-duration: 0.4s; 
+      transition-duration: 0.4s;
+      cursor: pointer; 
+      font-weight: 400;
+      height: 90%;
+      width: 90%;
+      display: grid;
+      align-content: center;
+}
+
+.botonN{
+  background-color: gray;
+}
+.botonN:active{
+  background-color: rgb(197, 197, 194);
+}
+
+.botonO{
+  background-color: #576489;
+}
+.botonO:active{
+  background-color: #2C59E1;
+}
+
+.botonC{
+  background-color: #934645;
+}
+.botonC:active{
+  background-color: #BF6D6C;
+}
+
+
+@media(max-width: 400px){
+  .botones{
+    font-size: 15px;
+  }
+}
+
+@media(max-width: 1024px){
+  .calculadora{
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media(max-device-height: 653px){
+  .display{
+    height: 300px;
+  }
+  .displaym{
+    height: 120px;
+  }
+}
+
+@media(max-device-width: 375px){
+  .display{
+    height: 300px;
+  }
+  .displaym{
+    height: 150px;
+  }
+}
+
+
+@media(max-device-height: 1366px){
+  .display{
+    height: 175px;
+  }
+  .displaym{
+    height: 70px;
+  }
+}

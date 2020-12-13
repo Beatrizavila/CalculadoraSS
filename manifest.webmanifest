@@ -1,0 +1,22 @@
+{
+  "short_name": "Calculadora Básica",
+  "name": "Calculadora Funciones Básicas",
+  "description": "AplicaciónSS JS Responsive",
+  "icons": [
+    {
+      "src": "/img/icons-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/img/icons-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/CalculadoraSS",
+  "background_color": "#4A4645",
+  "display": "standalone",
+  "scope": "/CalculadoraSS",
+  "theme_color": "#4A4645"
+}

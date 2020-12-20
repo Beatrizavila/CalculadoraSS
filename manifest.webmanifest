@@ -14,7 +14,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "./",
+  "start_url": "./?utm_source=web_app_manifest",
   "background_color": "#4A4645",
   "display": "standalone",
   "scope": "./",

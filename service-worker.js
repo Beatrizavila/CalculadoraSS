@@ -1,97 +1,61 @@
-// Set a name for the current cache
-var cacheName = 'v1';
+;
+//asignar un nombre y versión al cache
+const CACHE_NAME = 'v1_cache_programador_fitness',
+  urlsToCache = [
+    './',
+    './estilo.css',
+    './calculadora.js',
+    './index.html',
+    './manifest.webmanifest',
+    './img/icons-192.png',
+    './img/icons-512.png'
+  ]
 
-// Default files to always cache
-var cacheFiles = [
-  './',
-];
-
-self.addEventListener('install', function (e) {
-  console.log('[ServiceWorker] Installed');
-
-  // e.waitUntil Delays the event until the Promise is resolved
+//durante la fase de instalación, generalmente se almacena en caché los activos estáticos
+self.addEventListener('install', e => {
   e.waitUntil(
-    // Open the cache
-    caches.open(cacheName).then(function (cache) {
-      // Add all the default files to the cache
-      console.log('[ServiceWorker] Caching cacheFiles');
-      return cache.addAll(cacheFiles);
-    })
-  ); // end e.waitUntil
-});
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        return cache.addAll(urlsToCache)
+          .then(() => self.skipWaiting())
+      })
+      .catch(err => console.log('Falló registro de cache', err))
+  )
+})
 
-self.addEventListener('activate', function (e) {
-  console.log('[ServiceWorker] Activated');
+//una vez que se instala el SW, se activa y busca los recursos para hacer que funcione sin conexión
+self.addEventListener('activate', e => {
+  const cacheWhitelist = [CACHE_NAME]
 
   e.waitUntil(
-    // Get all the cache keys (cacheName)
-    caches.keys().then(function (cacheNames) {
-      return Promise.all(
-        cacheNames.map(function (thisCacheName) {
-          // If a cached item is saved under a previous cacheName
-          if (thisCacheName !== cacheName) {
-            // Delete that cached file
-            console.log(
-              '[ServiceWorker] Removing Cached Files from Cache - ',
-              thisCacheName
-            );
-            return caches.delete(thisCacheName);
-          }
-        })
-      );
-    })
-  ); // end e.waitUntil
-});
-
-self.addEventListener('fetch', function (e) {
-  console.log('[ServiceWorker] Fetch', e.request.url);
-
-  // e.respondWidth Responds to the fetch event
-  e.respondWith(
-    // Check in cache for the request being made
-    caches
-      .match(e.request)
-
-      .then(function (response) {
-        // If the request is in the cache
-        if (response) {
-          console.log(
-            '[ServiceWorker] Found in Cache',
-            e.request.url,
-            response
-          );
-          // Return the cached version
-          return response;
-        }
-
-        // If the request is NOT in the cache, fetch and cache
-
-        var requestClone = e.request.clone();
-        fetch(requestClone)
-          .then(function (response) {
-            if (!response) {
-              console.log('[ServiceWorker] No response from fetch ');
-              return response;
+    caches.keys()
+      .then(cacheNames => {
+        return Promise.all(
+          cacheNames.map(cacheName => {
+            //Eliminamos lo que ya no se necesita en cache
+            if (cacheWhitelist.indexOf(cacheName) === -1) {
+              return caches.delete(cacheName)
             }
-
-            var responseClone = response.clone();
-
-            //  Open the cache
-            caches.open(cacheName).then(function (cache) {
-              // Put the fetched response in the cache
-              cache.put(e.request, responseClone);
-              console.log('[ServiceWorker] New Data Cached', e.request.url);
-
-              // Return the response
-              return response;
-            }); // end caches.open
           })
-          .catch(function (err) {
-            console.log(
-              '[ServiceWorker] Error Fetching & Caching New Data',
-              err
-            );
-          });
-      }) // end caches.match(e.request)
-  ); // end e.respondWith
-});
+        )
+      })
+      // Le indica al SW activar el cache actual
+      .then(() => self.clients.claim())
+  )
+})
+
+//cuando el navegador recupera una url
+self.addEventListener('fetch', e => {
+  //Responder ya sea con el objeto en caché o continuar y buscar la url real
+  e.respondWith(
+    caches.match(e.request)
+      .then(res => {
+        if (res) {
+          //recuperar del cache
+          return res
+        }
+        //recuperar de la petición a la url
+        return fetch(e.request)
+      })
+  )
+})

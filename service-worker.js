@@ -1,11 +1,11 @@
-const cache_name = 'cache3',
+const cache_name = 'cache5',
 urlsToCache = [
     './',
    './estilo.css',
     './calculadora.js',
     './index.html',
     './manifest.webmanifest',
-    './img/icons-192.png',
+    './img/icons-192.png'
     './img/icons-512.png'
     
 ]

@@ -4,7 +4,7 @@ urlsToCache = [
    './estilo.css',
     './calculadora.js',
     './index.html',
-    './manifest.webmanifest',
+    './manifest.json',
     './img/icons-192.png',
     './img/icons-512.png'
     

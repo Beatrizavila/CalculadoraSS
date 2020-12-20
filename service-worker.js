@@ -6,7 +6,7 @@ const CACHE_NAME = 'v1_cache_programador_fitness',
     './estilo.css',
     './calculadora.js',
     './index.html',
-    './manifest.webmanifest',
+    './manifest.webmanifest.webmanifest',
     './img/icons-192.png',
     './img/icons-512.png'
   ]

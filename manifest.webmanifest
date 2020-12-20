@@ -14,9 +14,9 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "./CalculadoraSS",
+  "start_url": "./",
   "background_color": "#4A4645",
   "display": "standalone",
-  "scope": "./CalculadoraSS",
+  "scope": "./",
   "theme_color": "#4A4645"
 }

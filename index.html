@@ -1,43 +1,52 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta rset="UTF-8" rel="manifest" href="./manifest.json" />
-<title>CalculadoraSS</title>
-<link rel="shortcut icon" href="img/icons-192.png" type="image/png" />
-<link type="text/css" href="estilo.css" rel="stylesheet">
-<script src="calculadora.js"></script>
-</head>
-<body onload="init();" style="background-color:#4A4645;">
-<div class="container">
-  <div class="calculadora">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="estilo.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>CalculadoraSS</title>
+  </head>
+  <body onload="init();" style="background-color: #4a4645">
+    <div class="container">
+      <div class="calculadora">
+        <div>
+          <input
+            class="displaym"
+            type="text"
+            disabled
+            id="memoriadisplay"
+            value="M"
+          />
+        </div>
 
-    <div><input class="displaym" type="text" disabled id="memoriadisplay" value="M"></div>
+        <div><input class="display" type="text" disabled id="resultado" /></div>
 
-    <div><input class="display" type="text" disabled id="resultado"></div>
-
-    <div class="botonesContainer">
-      <div class="botones botonN" id="siete">7</div>
-      <div class="botones botonN" id="ocho">8</div>
-      <div class="botones botonN" id="nueve">9</div>
-      <div class="botones botonO" id="division">/</div>
-      <div class="botones botonO" id="agregarmemoria">M+</div>
-      <div class="botones botonN" id="cuatro">4</div>
-      <div class="botones botonN" id="cinco">5</div>
-      <div class="botones botonN" id="seis">6</div>
-      <div class="botones botonO" id="multiplicacion">*</div>
-      <div class="botones botonO" id="traermemoria">SI</div>
-      <div class="botones botonN" id="uno">1</div>
-      <div class="botones botonN" id="dos">2</div>
-      <div class="botones botonN" id="tres">3</div>
-      <div class="botones botonO" id="resta">-</div>
-      <div class="botones botonO" id="limpiarmemoria">MC</div>
-      <div class="botones botonC" id="reset">C</div>
-      <div class="botones botonN" id="cero">0</div>
-      <div class="botones botonN" id="punto">.</div>
-      <div class="botones botonO" id="suma">+</div>
-      <div class="botones botonN" id="igual">=</div>
+        <div class="botonesContainer">
+          <div class="botones botonN" id="siete">7</div>
+          <div class="botones botonN" id="ocho">8</div>
+          <div class="botones botonN" id="nueve">9</div>
+          <div class="botones botonO" id="division">/</div>
+          <div class="botones botonO" id="agregarmemoria">M+</div>
+          <div class="botones botonN" id="cuatro">4</div>
+          <div class="botones botonN" id="cinco">5</div>
+          <div class="botones botonN" id="seis">6</div>
+          <div class="botones botonO" id="multiplicacion">*</div>
+          <div class="botones botonO" id="traermemoria">SI</div>
+          <div class="botones botonN" id="uno">1</div>
+          <div class="botones botonN" id="dos">2</div>
+          <div class="botones botonN" id="tres">3</div>
+          <div class="botones botonO" id="resta">-</div>
+          <div class="botones botonO" id="limpiarmemoria">MC</div>
+          <div class="botones botonC" id="reset">C</div>
+          <div class="botones botonN" id="cero">0</div>
+          <div class="botones botonN" id="punto">.</div>
+          <div class="botones botonO" id="suma">+</div>
+          <div class="botones botonN" id="igual">=</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</body>
+
+    <script src="app.js"></script>
+  </body>
 </html>
